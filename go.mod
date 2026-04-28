@@ -35,3 +35,6 @@ require (
 
 // personal fork - tracking upstream wavetermdev/waveterm
 // last synced: 2024-04
+// notes:
+//   - studying the pty + websocket integration for a side project
+//   - go-sqlite3 requires CGO; remember to set CGO_ENABLED=1 when building
