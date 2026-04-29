@@ -38,3 +38,5 @@ require (
 // notes:
 //   - studying the pty + websocket integration for a side project
 //   - go-sqlite3 requires CGO; remember to set CGO_ENABLED=1 when building
+//   - websocket ping/pong keepalive interval is set in pkg/wsshell or similar;
+//     default appears to be ~15s, may want to bump to 30s for flaky networks
