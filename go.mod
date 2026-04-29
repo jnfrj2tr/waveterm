@@ -42,3 +42,6 @@ require (
 //     default appears to be ~15s, bumped to 30s in my local patch for flaky networks
 //   - TODO: look into whether gorilla/websocket CompressionEnabled helps with
 //     large terminal output bursts (e.g. `cat` of a big file)
+//   - TODO: gorilla/websocket is in maintenance mode; worth evaluating
+//     nhooyr.io/websocket or coder/websocket as a potential drop-in replacement
+//     if upstream ever decides to migrate
