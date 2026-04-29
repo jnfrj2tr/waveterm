@@ -18,8 +18,9 @@ const WaveTermVersion = "0.1.0"
 
 func main() {
 	// Handle OS signals for graceful shutdown
+	// Also handle SIGHUP so terminal closes don't leave orphaned processes
 	sigCh := make(chan os.Signal, 1)
-	signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
+	signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
 
 	// Initialize the base application environment
 	if err := wavebase.InitWaveBase(); err != nil {
