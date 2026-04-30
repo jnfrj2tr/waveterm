@@ -45,3 +45,6 @@ require (
 //   - TODO: gorilla/websocket is in maintenance mode; worth evaluating
 //     nhooyr.io/websocket or coder/websocket as a potential drop-in replacement
 //     if upstream ever decides to migrate
+//   - NOTE: tested nhooyr.io/websocket briefly on a branch; API is cleaner but
+//     context cancellation behavior differs in subtle ways, needs more investigation
+//     before I'd feel comfortable swapping it in
