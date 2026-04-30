@@ -20,6 +20,7 @@ const (
 	DefaultLogDir  = "log"
 	DefaultDataDir = "data"
 	DefaultTempDir = "tmp"
+	DefaultConfigDir = "config"
 )
 
 var (
@@ -55,6 +56,7 @@ func EnsureWaveHomeDir() error {
 		filepath.Join(homeDir, DefaultLogDir),
 		filepath.Join(homeDir, DefaultDataDir),
 		filepath.Join(homeDir, DefaultTempDir),
+		filepath.Join(homeDir, DefaultConfigDir),
 	}
 	for _, dir := range subDirs {
 		if err := os.MkdirAll(dir, 0755); err != nil {
@@ -77,6 +79,11 @@ func GetDataDir() string {
 // GetTempDir returns the path to the temp directory.
 func GetTempDir() string {
 	return filepath.Join(GetWaveHomeDir(), DefaultTempDir)
+}
+
+// GetConfigDir returns the path to the config directory.
+func GetConfigDir() string {
+	return filepath.Join(GetWaveHomeDir(), DefaultConfigDir)
 }
 
 // GetOS returns a normalized OS identifier string.
