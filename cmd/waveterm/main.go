@@ -19,6 +19,7 @@ const WaveTermVersion = "0.1.0"
 func main() {
 	// Handle OS signals for graceful shutdown
 	// Also handle SIGHUP so terminal closes don't leave orphaned processes
+	// Note: using a buffered channel of size 1 is sufficient since we exit after the first signal
 	sigCh := make(chan os.Signal, 1)
 	signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM, syscall.SIGHUP)
 
@@ -39,7 +40,7 @@ func main() {
 	// Wait for shutdown signal
 	go func() {
 		sig := <-sigCh
-		fmt.Printf("\nReceived signal %v, shutting down...\n", sig)
+		fmt.Printf("\nReceived signal %v, shutting down gracefully...\n", sig)
 		shutdown()
 		os.Exit(0)
 	}()
