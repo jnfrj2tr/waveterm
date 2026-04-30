@@ -19,6 +19,7 @@ const (
 	DefaultHomeDir = ".waveterm"
 	DefaultLogDir  = "log"
 	DefaultDataDir = "data"
+	DefaultTempDir = "tmp"
 )
 
 var (
@@ -53,6 +54,7 @@ func EnsureWaveHomeDir() error {
 		homeDir,
 		filepath.Join(homeDir, DefaultLogDir),
 		filepath.Join(homeDir, DefaultDataDir),
+		filepath.Join(homeDir, DefaultTempDir),
 	}
 	for _, dir := range subDirs {
 		if err := os.MkdirAll(dir, 0755); err != nil {
@@ -70,6 +72,11 @@ func GetLogDir() string {
 // GetDataDir returns the path to the data directory.
 func GetDataDir() string {
 	return filepath.Join(GetWaveHomeDir(), DefaultDataDir)
+}
+
+// GetTempDir returns the path to the temp directory.
+func GetTempDir() string {
+	return filepath.Join(GetWaveHomeDir(), DefaultTempDir)
 }
 
 // GetOS returns a normalized OS identifier string.
